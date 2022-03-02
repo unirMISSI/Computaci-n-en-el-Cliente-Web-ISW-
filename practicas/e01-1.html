@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            Rectangulo = function (b, a) {
+                this.base = Number(b);
+                this.altura = Number(a);
+            };
+
+            Rectangulo.prototype.perimetro = function () {
+                const perimetro = 2 * (this.base + this.altura);
+
+                return perimetro.toFixed(2);
+            };
+
+            Rectangulo.prototype.area = function () {
+                const area = this.base * this.altura;
+                return area.toFixed(2);
+            };
+
+            window.onload = () => {
+                const formulario = document.querySelector("form");
+                formulario.addEventListener("submit", (e) => {
+                    e.preventDefault();
+
+                    const resultado = document.querySelector("#resultado");
+                    resultado.innerHTML = "";
+
+                    const base = document.querySelector("#base");
+                    const altura = document.querySelector("#altura");
+
+                    const rectangulo = new Rectangulo(base.value, altura.value);
+
+                    const texto = document.createElement("p");
+                    texto.textContent = `El area del rectangulo es ${rectangulo.area()} \n\n El perimetro es ${rectangulo.perimetro()}`;
+
+                    resultado.appendChild(texto);
+                });
+            };
+        </script>
+    </head>
+    <body>
+        <form action="" method="post">
+            <label for="base">Base</label>
+            <input type="text" name="base" id="base" />
+            <label for="altura">Altura</label>
+            <input type="text" name="altura" id="altura" />
+            <button type="submit">Calcular</button>
+        </form>
+        <div id="resultado"></div>
+    </body>
+</html>

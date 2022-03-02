@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <script>
+            window.onload = () => {
+                const form = document.querySelector("form");
+                const v1 = document.querySelector("#v1");
+                const v2 = document.querySelector("#v2");
+
+                const resultado = document.querySelector("#resultado");
+                resultado.innerHTML = "El resultado de la suma es:";
+
+                form.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    // const suma = Number(v1.value) + Number(v2.value);
+                    fetch("http://procesarSuma.php", {
+                        method: "POST",
+                        body: JSON.stringify({
+                            a: parseFloat(v1.value),
+                            b: parseFloat(v2.value),
+                        }),
+                    })
+                        .then((r) => r.json())
+                        .then((suma) => {
+                            resultado.innerHTML = `El resultado de la suma es: ${suma}`;
+                        })
+                        .catch((e) => {
+                            console.error(e);
+                            resultado.innerHTML = `Error: ${e.message}`;
+                        });
+                });
+            };
+        </script>
+    </head>
+    <body>
+        <form action="" method="post">
+            <label for="v1">Valor 1</label>
+            <input type="text" name="v1" id="v1" />
+            <label for="v2">Valor 2</label>
+            <input type="text" name="v2" id="v2" />
+            <button type="submit">Calcular</button>
+        </form>
+
+        <p id="resultado"></p>
+    </body>
+</html>

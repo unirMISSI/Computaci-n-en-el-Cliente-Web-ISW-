@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            window.onload = () => {
+                const formulario = document.querySelector("form");
+                const seleccion = document.querySelector("#selector");
+                const celsius = document.querySelector("#celsius");
+                const fahrenheit = document.querySelector("#fahrenheit");
+                let opcion = seleccion.value;
+
+                seleccion.addEventListener("change", (e) => {
+                    opcion = e.target.value;
+
+                    if (opcion === "cof") {
+                        fahrenheit.value = "";
+                        fahrenheit.disabled = true;
+                        celsius.value = "";
+                        celsius.disabled = false;
+                    } else if (opcion === "foc") {
+                        celsius.value = "";
+                        celsius.disabled = true;
+                        fahrenheit.value = "";
+                        fahrenheit.disabled = false;
+                    }
+                });
+
+                formulario.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    if (opcion === "cof") {
+                        fahrenheit.value = (1.8 * celsius.value + 32).toFixed(
+                            2
+                        );
+                    } else if (opcion === "foc") {
+                        cel = (fahrenheit.value - 32) / 1.8;
+                        celsius.value = cel.toFixed(2);
+                    }
+                });
+            };
+        </script>
+    </head>
+    <body>
+        <form action="" method="post">
+            <label for="selector">Selector</label>
+            <select name="selector" id="selector">
+                <option value="cof">Celsus a Fahrenheit</option>
+                <option value="foc">Fahrenheit a Celsus</option>
+            </select>
+            <label for="celsius">Celsius</label>
+            <input type="text" name="celsius" id="celsius" />
+            <label for="fahrenheit">Fahrenheit</label>
+            <input type="text" name="fahrenheit" id="fahrenheit" disabled />
+            <button type="submit">Calcular</button>
+        </form>
+    </body>
+</html>

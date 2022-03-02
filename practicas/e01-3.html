@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            window.onload = () => {
+                const navegador = document.querySelector("#navegador");
+                const pagina = document.querySelector("#pagina");
+
+                navegador.innerHTML = `Posicion respecto al Navegador es x: , y: `;
+                pagina.innerHTML = `Posicion respecto a la Pagina es x: , y: `;
+                window.addEventListener("mousemove", (e) => {
+                    navegador.innerHTML = `Posicion respecto al Navegador es x: ${e.clientX},  y: ${e.clientY}`;
+                    pagina.innerHTML = `Posicion respecto a la Pagina es x: ${e.pageX},  y: ${e.pageY}`;
+                });
+            };
+        </script>
+    </head>
+    <body>
+        <div id="navegador"></div>
+        <br />
+        <div id="pagina"></div>
+    </body>
+</html>

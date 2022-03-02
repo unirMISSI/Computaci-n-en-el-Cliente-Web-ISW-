@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta
+            http-equiv="content-type"
+            content="text/html; charset=iso-8859-1"
+        />
+        <title>Recorrido Arbol</title>
+        <script>
+            const recorrerArbol = (arbol) => {
+                const ps = arbol.querySelectorAll("p");
+                ps.forEach((p) => {
+                    alert(p.outerText);
+                });
+                alert(`Procesados ${ps.length} elementos`);
+            };
+        </script>
+    </head>
+    <body onload="recorrerArbol(document.body)">
+        <p>
+            Lorem ipsum dolor <a href="#">sit amet</a> consectetur adipisicing
+            elit. Accusantium eius corporis commodi, pariatur animi suscipit
+            molestiae expedita aspernatur, necessitatibus neque impedit quasi
+        </p>
+        <p>voluptates ab enim explicabo doloremque deleniti amet repellat.</p>
+        <ul>
+            <li>rareqwoerij</li>
+            <li>aserqer</li>
+            <li>aserrtweg</li>
+            <li>hrtyreth</li>
+            <li>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Obcaecati ad quo iusto? Animi voluptate temporibus nobis
+                    autem aut dicta omnis, minus porro magni quas veritatis
+                    unde, consectetur, ex pariatur ad.
+                </p>
+            </li>
+        </ul>
+        <p>
+            Lorem ipsum dolor sit, amet
+            <a href="#">consectetur <strong>adipisicing elit</strong></a>
+            Expedita repudiandae aliquid qui natus similique quia sequi,
+            mollitia provident consectetur voluptas quos praesentium, laudantium
+            eligendi architecto consequuntur minima aperiam nemo cumque!
+        </p>
+    </body>
+</html>

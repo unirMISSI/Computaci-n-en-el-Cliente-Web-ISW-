@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            window.onload = () => {
+                const alumnos = [
+                    "Ana",
+                    "Pedro",
+                    "Carol",
+                    "David",
+                    "Elena",
+                    "Lola",
+                ];
+                const notas = [];
+                const boton = document.querySelector("button");
+                const tablaNotas = document.querySelector("#tablaNotas");
+                tablaNotas.innerHTML =
+                    "<tr><th>Id</th><th>Nombre</th><th>Nota</th></tr>";
+
+                alumnos.map(() => {
+                    notas.push(5);
+                });
+
+                const imprimirListado = (alumnos, notas, tablaNotas) => {
+                    for (let i = 0; i < alumnos.length; i++) {
+                        const tr = document.createElement("tr");
+                        tr.innerHTML = `<td>${i}</td><td>${alumnos[i]}</td><td>${notas[i]}</td>`;
+                        tablaNotas.appendChild(tr);
+                    }
+                };
+                imprimirListado(alumnos, notas, tablaNotas);
+
+                boton.addEventListener("click", () => {
+                    tablaNotas.innerHTML =
+                        "<tr><th>Id</th><th>Nombre</th><th>Nota</th></tr>";
+                    const id = window.prompt("Agregar el ID del alumno");
+                    const nombre = window.prompt("Cambiar el nombre de alumno");
+                    const nota = window.prompt("Cambiar la nota del alumno");
+                    alumnos[id] = nombre;
+                    notas[id] = nota;
+
+                    imprimirListado(alumnos, notas, tablaNotas);
+                });
+            };
+        </script>
+    </head>
+    <body>
+        <button>Cambiar Datos</button>
+        <table id="tablaNotas"></table>
+    </body>
+</html>
